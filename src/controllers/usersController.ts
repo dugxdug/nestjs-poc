@@ -1,6 +1,6 @@
-import { Controller, Get, Req, Post, Body } from '@nestjs/common';
+import { Controller, Get, Req, Post, Body, Res, HttpStatus } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
-import { User } from '../interfaces/user.interface';
+import { Users } from '../interfaces/user.interface';
 import { UsersService } from '../services/users.service';
 
 @Controller('users')
@@ -13,7 +13,11 @@ export class UsersController {
   }
 
   @Get()
-  findAll(@Req() request) {
-    return this.usersService.findAll();
+  findAll(@Req() request, @Res() res) {
+    Promise.resolve(this.usersService.findAll()).then(response => {
+      response.map(data => {
+        res.status(HttpStatus.OK).json(data);
+      });
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Inject } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { Model } from 'sequelize-typescript';
-import { User } from '../models/user.entity';
+import { Users } from '../models/user.entity';
 
 @Component()
   export class UsersService {
@@ -9,13 +9,13 @@ import { User } from '../models/user.entity';
       @Inject('UsersRepository') private readonly usersRepository: typeof Model,
     ) {}
 
-    private readonly users: User[] = [];
+    private readonly users: Users[] = [];
 
-    create(user: User) {
+    create(user: Users) {
       this.users.push(user);
     }
 
-    async findAll(): Promise<User[]> {
-      return await this.usersRepository.findAll<User>();
+    async findAll(): Promise<Users[]> {
+      return await this.usersRepository.findAll<Users>({where: {userId: 1}});
     }
   }

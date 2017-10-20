@@ -15,10 +15,11 @@
     "@nestjs/microservices": "^4.0.0",
     "@nestjs/testing": "^4.0.0",
     "@nestjs/websockets": "^4.0.0",
+    "body-parser": "^1.18.2",
     "mssql": "^4.1.0",
     "redis": "^2.7.1",
     "reflect-metadata": "^0.1.10",
-    "rxjs": "^5.4.0",
+    "rxjs": "^5.5.0",
     "sequelize": "^4.15.0",
     "sequelize-typescript": "^0.5.0",
     "typescript": "^2.5.2"
